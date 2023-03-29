@@ -1,23 +1,30 @@
 <?php
-if($_SERVER["REQUEST_METHOD"] == "GET") {
-    require_once 'Conexion.php';
-    $my_query = "SELECT * FROM coordinador
-    WHERE DATE_FORMAT(FROM_DAYS(DATEDIFF(NOW(), fechaNac)), '%Y')+0 >= 60;";
-    
-    $result = $mysql ->query($my_query);
-    if($mysql->affected_rows > 0) {
-        $json = "{\"data\":[";
 
-            while($row = $result->fetch_assoc()){
-                $json = $json.json_encode($row);
-                $json=$json.",";
-            }
+// Datos de conexión a la base de datos
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "myuca";
 
-            $json=substr(trim($json),0,-1);
-            $json = $json."]}";
-    }
-    echo $json;
-    $result->close();
-    $mysql->close();
+// Crear conexión a la base de datos
+$conn = mysqli_connect($servername, $username, $password, $dbname);
+
+// Verificar si la conexión es exitosa
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
 }
+
+// Función para mostrar los registros de una tabla
+function mostrar($coordinador) {
+    global $conn;
+    $sql = "SELECT * FROM coordinador WHERE DATE_FORMAT(FROM_DAYS(DATEDIFF(NOW(), fechaNac)), '%Y')+0 >= 60";
+    $result = mysqli_query($conn, $sql);
+    $rows = array();
+    while($r = mysqli_fetch_assoc($result)) {
+        $rows[] = $r;
+    }
+    return json_encode($rows);
+}
+echo mostrar('coordinador');
+
 ?>
