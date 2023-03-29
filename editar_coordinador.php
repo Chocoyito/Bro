@@ -11,7 +11,7 @@
         $email = $_POST["email"];
         $facultad = $_POST["facultad"];
 
-        $my_query = "UPDATE coordinador SET nombres= '".$nombres."', apellidos= '".$apellidos."' , fechaNac= '".$fechaNac."', titulo= ', ".$titulo."', email= '".$email."', facultad= '".$facultad."' where idC=".$idC;
+        $my_query = "UPDATE coordinador SET nombres= '".$nombres."', apellidos= '".$apellidos."' , fechaNac= '".$fechaNac."', titulo= '".$titulo."', email= '".$email."', facultad= '".$facultad."' WHERE idC=".$idC;
         $result = $mysql->query($my_query);
 
         if($result == true){
