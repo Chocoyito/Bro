@@ -8,11 +8,22 @@
     android:background="@android:color/white"
     tools:context=".MainActivity">
 
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Coordinadores"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:gravity="center"/>
+
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="8dp"
+        android:layout_marginTop="50dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         tools:listitem="@layout/item_coordinador" />
 

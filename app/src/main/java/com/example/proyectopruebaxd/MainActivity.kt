@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
         coordinatorLayout = binding.coordinatorLayout
 
         val requestQueue = Volley.newRequestQueue(this)
-        val url = "http://192.168.0.22/PruebaDuranPHP/mostrar_coordinador.php"
+        val url = "http://192.168.73.130/PruebaDuranPHP/mostrar_coordinador.php"
 
         val stringRequest = StringRequest(
             Request.Method.GET, url,
